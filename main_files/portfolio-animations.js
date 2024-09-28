@@ -1,11 +1,9 @@
-// Intersection Observer options
 const observerOptions = {
     root: null,
     rootMargin: '0px',
     threshold: 0.1
 };
 
-// Intersection Observer callback
 const observerCallback = (entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -15,33 +13,27 @@ const observerCallback = (entries, observer) => {
     });
 };
 
-// Create the Intersection Observer
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-// Function to set up animations
 const setupAnimations = () => {
-    // Animate main sections
     const sections = document.querySelectorAll('section');
     sections.forEach((section, index) => {
         section.classList.add('fade-in', `delay-${index + 1}`);
         observer.observe(section);
     });
 
-    // Animate stat items
     const statItems = document.querySelectorAll('.stat-item');
     statItems.forEach((item, index) => {
         item.classList.add('scale-in', `delay-${index + 1}`);
         observer.observe(item);
     });
 
-    // Animate skill categories
     const skillCategories = document.querySelectorAll('.skill-category');
     skillCategories.forEach((category, index) => {
         category.classList.add(index % 2 === 0 ? 'slide-in-left' : 'slide-in-right', `delay-${index + 1}`);
         observer.observe(category);
     });
 
-    // Animate education, experience, and activity items
     const items = document.querySelectorAll('.education-item, .experience-item, .activity-item');
     items.forEach((item, index) => {
         item.classList.add('fade-in', `delay-${index % 4 + 1}`);
@@ -53,17 +45,16 @@ const setupAnimations = () => {
         element.classList.add('fade-in');
         observer.observe(element);
     });
+
 };
 
-// Run setup when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     setupAnimations();
     setupSmoothScrolling();
     highlightActiveSection();
-    setupFormSubmission(); // Add this new function call
+    setupFormSubmission(); 
 });
 
-// Function to set up smooth scrolling for navigation links
 const setupSmoothScrolling = () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
@@ -78,7 +69,6 @@ const setupSmoothScrolling = () => {
     });
 };
 
-// Function to highlight active section in navigation
 const highlightActiveSection = () => {
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav a');
@@ -102,29 +92,21 @@ const highlightActiveSection = () => {
     });
 };
 
-// Run setup when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     setupAnimations();
     setupSmoothScrolling();
     highlightActiveSection();
 });
 
-
-// Form submission handler
 const setupFormSubmission = () => {
     const form = document.getElementById('contact-form');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Add your form submission logic here
             console.log('Form submitted');
-            // You can add an AJAX request to send the form data to a server
         });
     }
 };
-
-
-
 
 
 document.getElementById('contact-form').addEventListener('submit', function(e) {
