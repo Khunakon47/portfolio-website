@@ -22,8 +22,8 @@ const observer = new IntersectionObserver(observerCallback, observerOptions);
 const setupAnimations = () => {
     // Animate main sections
     const sections = document.querySelectorAll('section');
-    sections.forEach(section => {
-        section.classList.add('fade-in');
+    sections.forEach((section, index) => {
+        section.classList.add('fade-in', `delay-${index + 1}`);
         observer.observe(section);
     });
 
@@ -47,29 +47,33 @@ const setupAnimations = () => {
         item.classList.add('fade-in', `delay-${index % 4 + 1}`);
         observer.observe(item);
     });
+
+    const newElements = document.querySelectorAll('.project-card, .skill-bar');
+    newElements.forEach(element => {
+        element.classList.add('fade-in');
+        observer.observe(element);
+    });
 };
 
 // Run setup when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', setupAnimations);
-
-const smoothScroll = (target) => {
-    const element = document.querySelector(target);
-    if (element) {
-        window.scrollTo({
-            top: element.offsetTop - 20, // Offset by 20px to account for any padding
-            behavior: 'smooth'
-        });
-    }
-};
+document.addEventListener('DOMContentLoaded', () => {
+    setupAnimations();
+    setupSmoothScrolling();
+    highlightActiveSection();
+    setupFormSubmission(); // Add this new function call
+});
 
 // Function to set up smooth scrolling for navigation links
 const setupSmoothScrolling = () => {
-    const navLinks = document.querySelectorAll('nav a');
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            const target = link.getAttribute('href');
-            smoothScroll(target);
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 };
@@ -103,4 +107,44 @@ document.addEventListener('DOMContentLoaded', () => {
     setupAnimations();
     setupSmoothScrolling();
     highlightActiveSection();
+});
+
+
+// Form submission handler
+const setupFormSubmission = () => {
+    const form = document.getElementById('contact-form');
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your form submission logic here
+            console.log('Form submitted');
+            // You can add an AJAX request to send the form data to a server
+        });
+    }
+};
+
+
+
+
+
+document.getElementById('contact-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    console.log('Form submitted');
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+
+document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in').forEach(el => {
+    observer.observe(el);
+});
+
+document.querySelectorAll('.skill-bar').forEach(bar => {
+    observer.observe(bar);
 });
