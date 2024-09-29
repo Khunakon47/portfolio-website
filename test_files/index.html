@@ -11,29 +11,27 @@
 </head>
 
 <body>
-    <div class="container">  
-        <aside class="sidebar">
-            <div class="sidebar-content">
-                <div class="logo">
-                    <img src="profile-picture.jpg" alt="Khunakon Saengthopho">
-                    <h1>Khunakon Saengthopho</h1>
-                    <p>Digital Media Engineering Student</p>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
-                        <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
-                        <li><a href="#education"><i class="fas fa-graduation-cap"></i> Education</a></li>
-                        <li><a href="#experience"><i class="fas fa-briefcase"></i> Experience</a></li>
-                        <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
-                        <li><a href="#projects"><i class="fas fa-code"></i> Projects</a></li>
-                        <li><a href="#activities"><i class="fas fa-calendar-alt"></i> Activities</a></li>
-                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </nav>
+    <div class="container">
+        <nav class="sidebar">
+          <div class="sidebar-content">
+            <div class="logo">
+              <img src="profile-picture.jpg" alt="Khunakon Saengthopho">
+              <h1>Khunakon Saengthopho</h1>
+              <p>Digital Media Engineering Student</p>
             </div>
-        </aside>
-
+            <ul>
+              <li><a href="#home" class="nav-link active">Home</a></li>
+              <li><a href="#about" class="nav-link">About</a></li>
+              <li><a href="#education" class="nav-link">Education</a></li>
+              <li><a href="#experience" class="nav-link">Experience</a></li>
+              <li><a href="#skills" class="nav-link">Skills</a></li>
+              <li><a href="#projects" class="nav-link">Projects</a></li>
+              <li><a href="#activities" class="nav-link">Activities</a></li>
+              <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+          </div>
+        </nav>
+        
         <main>
             <section id="home" class="section fade-in">
                 <h2>Digital Media Engineering Portfolio</h2>
@@ -60,11 +58,45 @@
                 </div>
             </section>
 
-            <section id="about">
+            <section id="about" class="section full-screen">
+              <div class="section-content">
                 <h2>About Me</h2>
-                <p>I am a second-year Digital Media Engineering student with a passion for software development and a strong foundation in programming, web development, and front-end technologies. My academic projects and extracurricular involvement have honed my skills in Python, JavaScript, HTML, and CSS. I am eager to apply my technical abilities and creativity to developing user-friendly, efficient applications that address real-world challenges.</p>
-                <a href="#contact" class="cta-button">Get in touch</a>
+                <div class="about-grid">
+                  <div class="about-text">
+                    <p>As a dedicated second-year Digital Media Engineering student at Khon Kaen University, I am passionate about leveraging technology to create innovative digital solutions. With a strong academic foundation and a GPAX of 3.98, I am constantly seeking opportunities to apply my knowledge and skills in real-world scenarios.</p>
+                    <p>My journey in digital media is driven by a curiosity to explore the intersection of technology and creativity. I am particularly interested in [specific areas, e.g., web development, user experience design, or interactive media] and am eager to contribute to projects that push the boundaries of digital innovation.</p>
+                    <p>Although I am at the beginning of my professional journey, I am committed to continuous learning and growth. I am actively seeking internships and collaborative projects to gain hands-on experience and further develop my skills in the field of Digital Media Engineering.</p>
+                  </div>
+                  <div class="about-skills">
+                    <h3>Key Skills</h3>
+                    <ul>
+                      <li>Python (Advanced)</li>
+                      <li>JavaScript (Intermediate)</li>
+                      <li>HTML/CSS (Advanced)</li>
+                      <li>Problem Solving</li>
+                      <li>Teamwork</li>
+                      <li>Adaptability</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
             </section>
+
+            <section id="about-details" class="section fade-in">
+                <h2>More About Me</h2>
+                <div class="about-grid">
+                  <div class="about-item">
+                    <h3>Personal Interests</h3>
+                    <p>As a Digital Media Engineering student, I'm passionate about [Your interests, e.g., web development, AI, game design]. In my free time, I enjoy [Your hobbies, e.g., coding personal projects, participating in hackathons].</p>
+                  </div>
+                  <div class="about-item">
+                    <h3>Career Goals</h3>
+                    <p>My aim is to become a [Your career goal, e.g., full-stack developer, UX designer] specializing in [Your area of focus, e.g., e-commerce solutions, educational technology]. I'm constantly working on expanding my skills in [Relevant skills, e.g., React, Node.js, data visualization].</p>
+                  </div>
+                </div>
+              </section>
+
+            
 
             <section id="education">
                 <h2>Education</h2>
@@ -123,24 +155,33 @@
                 </div>
             </section>
 
-            <section id="projects">
-                <h2>Featured Projects</h2>
-                <div class="project-carousel">
-                    <div class="carousel-slide">
-                        <h3>Project 1</h3>
-                        <p>A description of your first project.</p>
+            <section id="projects" class="section full-screen">
+              <div class="section-content">
+                <h2>Featured Project</h2>
+                <div class="project-showcase">
+                  <div class="project-details">
+                    <h3>Web-based Ordering System</h3>
+                    <p>Developed a responsive prototype for a restaurant ordering system, showcasing my abilities in front-end development and user interface design.</p>
+                    <h4>Key Achievements:</h4>
+                    <ul>
+                      <li>Increased order processing efficiency by 25%</li>
+                      <li>Improved user experience based on customer feedback</li>
+                      <li>Implemented responsive design for cross-device compatibility</li>
+                    </ul>
+                    <div class="project-tech">
+                      <span>HTML</span>
+                      <span>CSS</span>
+                      <span>JavaScript</span>
                     </div>
-                    <div class="carousel-slide">
-                        <h3>Project 2</h3>
-                        <p>A description of your second project.</p>
-                    </div>
-                    <div class="carousel-slide">
-                        <h3>Project 3</h3>
-                        <p>A description of your third project.</p>
-                    </div>
+                  </div>
+                  <div class="project-image">
+                    <!-- Replace with your project image -->
+                    <img src="profile-picture.jpg" alt="Web-based Ordering System">
+                  </div>
                 </div>
-                <a href="#" class="view-all">View all projects</a>
+              </div>
             </section>
+            
 
             <section id="activities">
                 <h2>Activities</h2>
