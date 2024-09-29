@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   highlightActiveSection();
   setupFormSubmission();
   animateSkillBars();
+  setupScrollToTop();
 });
 
 const observerOptions = {
@@ -73,26 +74,29 @@ function setupFormSubmission() {
       form.addEventListener('submit', function(e) {
           e.preventDefault();
           console.log('Form submitted');
-          // Add your form submission logic here
       });
   }
 }
 
 function animateSkillBars() {
   const skillBars = document.querySelectorAll('.skill-bar');
-  skillBars.forEach(bar => {
-      const percentage = bar.getAttribute('data-percentage');
-      bar.style.width = '0%';
-      bar.style.transition = 'width 1s ease-in-out';
-      setTimeout(() => {
-          bar.style.width = percentage;
-      }, 100);
-  });
+  const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              const progressBar = entry.target.querySelector('.skill-progress');
+              const percentage = progressBar.getAttribute('data-percentage');
+              progressBar.style.width = percentage;
+              observer.unobserve(entry.target);
+          }
+      });
+  }, { threshold: 0.5 });
+
+  skillBars.forEach(bar => observer.observe(bar));
 }
 
 function smoothScroll(target, duration) {
   const targetElement = document.querySelector(target);
-  const targetPosition = targetElement.getBoundingClientRect().top;
+  const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
   const startPosition = window.pageYOffset;
   const distance = targetPosition - startPosition;
   let startTime = null;
@@ -113,4 +117,26 @@ function smoothScroll(target, duration) {
   }
 
   requestAnimationFrame(animation);
+}
+
+function setupScrollToTop() {
+  const scrollToTopButton = document.createElement('div');
+  scrollToTopButton.classList.add('scroll-to-top');
+  scrollToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
+  document.body.appendChild(scrollToTopButton);
+
+  window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+          scrollToTopButton.classList.add('visible');
+      } else {
+          scrollToTopButton.classList.remove('visible');
+      }
+  });
+
+  scrollToTopButton.addEventListener('click', () => {
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+      });
+  });
 }
