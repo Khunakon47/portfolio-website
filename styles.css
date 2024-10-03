@@ -410,10 +410,15 @@ h3 {
 }
 
 /* Contact Section Styles */
+/* ... (previous CSS code remains unchanged) ... */
+
+/* Contact Section Styles */
 .contact-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 40px;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .contact-info p {
@@ -444,16 +449,33 @@ h3 {
 .contact-form input,
 .contact-form textarea {
     margin-bottom: 15px;
-    padding: 10px;
+    padding: 12px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--text-color);
     border-radius: 5px;
+    width: 100%; /* Ensure full width */
+    box-sizing: border-box; /* Include padding in width calculation */
 }
 
 .contact-form textarea {
     height: 150px;
     resize: vertical;
+}
+
+.contact-form button {
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%; /* Full width button */
+}
+
+.contact-form button:hover {
+    background-color: var(--secondary-color);
 }
 
 .contact-list a {
@@ -482,6 +504,27 @@ h3 {
 .social-links a:hover {
     color: var(--primary-color);
 }
+
+/* Responsive design for larger screens */
+@media (min-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Responsive design for mobile */
+@media (max-width: 767px) {
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        width: 100%;
+    }
+    
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
 /* Animation Classes */
 .fade-in,
