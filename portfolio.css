@@ -410,9 +410,6 @@ h3 {
 }
 
 /* Contact Section Styles */
-/* ... (previous CSS code remains unchanged) ... */
-
-/* Contact Section Styles */
 .contact-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -454,8 +451,8 @@ h3 {
     background-color: rgba(255, 255, 255, 0.05);
     color: var(--text-color);
     border-radius: 5px;
-    width: 100%; /* Ensure full width */
-    box-sizing: border-box; /* Include padding in width calculation */
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contact-form textarea {
@@ -471,7 +468,7 @@ h3 {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 100%; /* Full width button */
+    width: 100%;
 }
 
 .contact-form button:hover {
